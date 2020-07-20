@@ -2,12 +2,13 @@
   "name": "vk_miniApp",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://nonewillsurvive.github.io/vk_miniApp/",
   "main": "index.js",
   "scripts": {
     "start": "cross-env PORT=10888 HTTPS=true react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
-    "deploy": "vk-miniapps-deploy"
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +20,7 @@
     "react-scripts": "^3.4.1"
   },
   "dependencies": {
-    "@vkontakte/icons": "^1.18.2",
+    "@vkontakte/icons": "^1.28.0",
     "@vkontakte/vk-bridge": "^2.2.3",
     "@vkontakte/vk-miniapps-deploy": "0.0.17",
     "@vkontakte/vkui": "^3.5.0",
@@ -29,9 +30,14 @@
     "eruda": "^2.2.0",
     "eruda-code": "^2.0.0",
     "eruda-dom": "^2.0.0",
+    "jquery": "^3.5.1",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.2.0",
+    "react-scroll": "^1.8.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   },
   "browserslist": {
     "production": [

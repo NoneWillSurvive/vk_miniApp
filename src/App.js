@@ -1,43 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import bridge from '@vkontakte/vk-bridge';
 import View from '@vkontakte/vkui/dist/components/View/View';
 import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
 import '@vkontakte/vkui/dist/vkui.css';
-
 import Home from './panels/Home';
 import Persik from './panels/Persik';
+import HomeContainer from "./components/Home/HomeContainer";
+import FriendsContainer from "./components/Friends/FriendsContainer";
+import {Root} from "@vkontakte/vkui";
 
 const App = () => {
-	const [activePanel, setActivePanel] = useState('home');
-	const [fetchedUser, setUser] = useState(null);
-	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
+    const [activeView, setActiveView] = useState('homeView');
+    const go = e => {
+		setActiveView(e.currentTarget.dataset.to);
+    };
 
-	useEffect(() => {
-		bridge.subscribe(({ detail: { type, data }}) => {
-			if (type === 'VKWebAppUpdateConfig') {
-				const schemeAttribute = document.createAttribute('scheme');
-				schemeAttribute.value = data.scheme ? data.scheme : 'client_light';
-				document.body.attributes.setNamedItem(schemeAttribute);
-			}
-		});
-		async function fetchData() {
-			const user = await bridge.send('VKWebAppGetUserInfo');
-			setUser(user);
-			setPopout(null);
-		}
-		fetchData();
-	}, []);
-
-	const go = e => {
-		setActivePanel(e.currentTarget.dataset.to);
-	};
-
-	return (
-		<View activePanel={activePanel} popout={popout}>
-			<Home id='home' fetchedUser={fetchedUser} go={go} />
-			<Persik id='persik' go={go} />
-		</View>
-	);
+    // return (
+    // 	<View activePanel={activePanel}>
+    // 		{/*<Home id='home' fetchedUser={fetchedUser} go={go} />*/}
+    // 		<HomeContainer id='home' go={go}/>
+    // 		<FriendsContainer id='friends' go={go} />
+    // 		{/*<Persik id='persik' go={go} />*/}
+    // 	</View>
+    // );
+    return (
+        <Root activeView={activeView}>
+            <View id='homeView' activePanel='home'>
+                {/*<Home id='home' fetchedUser={fetchedUser} go={go} />*/}
+                <HomeContainer id='home' go={go}/>
+            </View>
+            <View id='friendsView' activePanel='friends'>
+                <FriendsContainer id='friends' go={go}/>
+                {/*<Persik id='persik' go={go} />*/}
+            </View>
+        </Root>
+    );
 }
 
 export default App;
