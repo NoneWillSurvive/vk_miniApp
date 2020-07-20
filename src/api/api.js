@@ -21,7 +21,7 @@ export const getDataAPI = {
                             }).then(response => response.response[0])
                     });
             }
-        ).catch( reason => throw new Error("Error Auth User: " + reason));
+        ).catch( reason => {throw new Error("Error Auth User: " + reason)} );
     },
 
     getFriends(pageSize, offsetSize) {
@@ -44,7 +44,7 @@ export const getDataAPI = {
                             }).then(response => response.response)
                     }
                 )
-            }).catch( reason => throw new Error("Error Auth User: " + reason) );
+            }).catch( reason => {throw new Error("Error Auth User: " + reason)} );
     }
 
 };
