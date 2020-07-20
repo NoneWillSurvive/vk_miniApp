@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import bridge from '@vkontakte/vk-bridge';
 import '@vkontakte/vkui/dist/vkui.css';
 
@@ -21,8 +21,9 @@ export const getDataAPI = {
                             }).then(response => response.response[0])
                     });
             }
-        )
+        ).catch( reason => throw new Error("Error Auth User: " + reason));
     },
+
     getFriends(pageSize, offsetSize) {
         return bridge.send("VKWebAppGetUserInfo", {}).then(
             response => {
@@ -43,7 +44,7 @@ export const getDataAPI = {
                             }).then(response => response.response)
                     }
                 )
-            })
+            }).catch( reason => throw new Error("Error Auth User: " + reason) );
     }
 
 };

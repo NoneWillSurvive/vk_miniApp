@@ -6,8 +6,6 @@ import Group from '@vkontakte/vkui/dist/components/Group/Group';
 import Cell from '@vkontakte/vkui/dist/components/Cell/Cell';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
-import Header from "@vkontakte/vkui/dist/components/Header/Header";
-import Link from "@vkontakte/vkui/dist/components/Link/Link";
 import Counter from "@vkontakte/vkui/dist/components/Counter/Counter";
 import List from "@vkontakte/vkui/dist/components/List/List";
 import Icon28UserOutline from '@vkontakte/icons/dist/28/user_outline';

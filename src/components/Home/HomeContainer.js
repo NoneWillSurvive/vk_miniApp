@@ -5,9 +5,6 @@ import '@vkontakte/vkui/dist/vkui.css';
 import {connect} from "react-redux";
 import {getHome} from "../../redux/homeReducer";
 
-
-
-
 class HomeContainer extends React.Component {
 
     componentDidMount() {

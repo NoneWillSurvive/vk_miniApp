@@ -41,11 +41,12 @@ export const getHome = () => {
                 let getAge = () => {
                     let bDate = new Date(response.bdate).getFullYear();
                     if(isNaN(bDate)) {
+                        // если год рождения не указан вернется NaN
                         return false
                     }
                     let date = new Date().getFullYear();
                     let age = date - bDate;
-                    return age
+                    return age;
                 };
 
                 let profile ={
